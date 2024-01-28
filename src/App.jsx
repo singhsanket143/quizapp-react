@@ -56,7 +56,7 @@ function App() {
   return (
     <div className="card-wrapper">
       <div className="app">
-      <div className={currentQuestion === quizQuestions.length - 1 ? 'hide' : ''}>
+      <div className={currentQuestion === quizQuestions.length  ? 'hide' : ''}>
         <div className="question-section">
           <div className="question-count">
             <span>Question {currentQuestion + 1}</span> / {quizQuestions.length}
