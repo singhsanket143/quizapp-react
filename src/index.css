@@ -1,17 +1,17 @@
 body {
   margin: 0;
-  font-family: 'Calibri', 'Arial', sans-serif; 
+  font-family: "Calibri", "Arial", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 * {
-  font-family: 'Trebuchet MS', sans-serif; 
-  color: #222222; 
+  font-family: "Trebuchet MS", sans-serif;
+  color: #222222;
 }
 
 body {
-  background-color: #EAE7DC; 
+  background-color: #eae7dc;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,13 +19,13 @@ body {
 }
 
 .app {
-  background-color: #8E8D8A;
+  background-color: #8e8d8a;
   width: 450px;
   min-height: 200px;
   height: min-content;
   border-radius: 15px;
   padding: 20px;
-  box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.5); 
+  box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: space-evenly;
 }
@@ -54,11 +54,11 @@ body {
 }
 
 .timer-text {
-  background: #B4CFB0; /* Muted green background */
+  background: #b4cfb0; /* Muted green background */
   padding: 15px;
   margin-top: 20px;
   margin-right: 20px;
-  border: 3px solid #9ABF88; /* Soft green border */
+  border: 3px solid #9abf88; /* Soft green border */
   border-radius: 15px;
   text-align: center;
 }
@@ -75,7 +75,7 @@ button {
   width: 80%;
   font-size: 16px;
   color: #ffffff;
-  background-color: #6B705C; /* Dark khaki background */
+  background-color: #6b705c; /* Dark khaki background */
   border-radius: 15px;
   display: flex;
   padding: 5px;
@@ -86,15 +86,15 @@ button {
 }
 
 .correct {
-  background-color: #81B29A; /* Soft teal for correct answers */
+  background-color: #81b29a; /* Soft teal for correct answers */
 }
 
 .incorrect {
-  background-color: #E07A5F; /* Soft red for incorrect answers */
+  background-color: #e07a5f; /* Soft red for incorrect answers */
 }
 
 button:hover {
-  background-color: #9A8C98; /* Lavender gray for hover */
+  background-color: #9a8c98; /* Lavender gray for hover */
 }
 
 button:focus {
