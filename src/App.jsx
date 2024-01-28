@@ -47,8 +47,8 @@ function App() {
 
   function checkAnswer(res) {
     if(res){
+      setCount(count+1);
       setResponse(true);
-      setCount(count+1)
     }
     setCurrentQuestion(currentQuestion + 1);
   }
@@ -70,7 +70,7 @@ function App() {
         </div>
         {response? <p>Correct Answer</p> : <p>Incorrect Answer</p>}
         </div>
-        {`Your fianl score is ${currentQuestion==quizQuestions.length-1 ? count : 0} / ${quizQuestions.length-1} `}
+       <h1>{`Your fianl score is ${currentQuestion==quizQuestions.length-1 ? count : 0} / ${quizQuestions.length-1} `}</h1> 
       </div>
       {/* <button onClick={onNextClick}>Next</button> */}
     </div>
