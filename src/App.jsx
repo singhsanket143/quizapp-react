@@ -7,6 +7,8 @@ function App() {
   console.log("Rendered");
 
   let [currentQuestion, setCurrentQuestion] = useState(0);
+  const [response,setResponse]=useState(false);
+  const [count,setCount]=useState(0);
 
   const quizQuestions = [
     {
@@ -38,18 +40,23 @@ function App() {
     },
   ];
 
-  function onNextClick() {
-    if(currentQuestion == quizQuestions.length - 1) return;
-    setCurrentQuestion(currentQuestion + 1);
-  }
+  // function onNextClick() {
+  //   if(currentQuestion == quizQuestions.length - 1) return;
+  //   setCurrentQuestion(currentQuestion + 1);
+  // }
 
-  function checkAnswer() {
-    
+  function checkAnswer(res) {
+    if(res){
+      setResponse(true);
+      setCount(count+1)
+    }
+    setCurrentQuestion(currentQuestion + 1);
   }
 
   return (
     <div className="card-wrapper">
       <div className="app">
+      <div className={currentQuestion === quizQuestions.length - 1 ? 'hide' : ''}>
         <div className="question-section">
           <div className="question-count">
             <span>Question {currentQuestion + 1}</span> / {quizQuestions.length}
@@ -59,12 +66,13 @@ function App() {
           </div>
         </div>
         <div className="answer-section">
-            { quizQuestions[currentQuestion].options.map(option => <button onClick={checkAnswer}>{option.answer}</button>) }
+        { quizQuestions[currentQuestion].options.map((option,index) => <button key={index} className={option.isCorrect ? "correct" : "incorrect"} onClick={checkAnswer(option.isCorrect)}>{option.answer}</button>) }
         </div>
+        {response? <p>Correct Answer</p> : <p>Incorrect Answer</p>}
+        </div>
+        {`Your fianl score is ${currentQuestion==quizQuestions.length-1 ? count : 0} / ${quizQuestions.length-1} `}
       </div>
-      {/* Button to show next question */}
-      {/* onClick is a HOF, onNextClick is a callback function */}
-      <button onClick={onNextClick}>Next</button>
+      {/* <button onClick={onNextClick}>Next</button> */}
     </div>
     
   );
