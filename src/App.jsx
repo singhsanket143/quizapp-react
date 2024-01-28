@@ -1,12 +1,14 @@
-/* eslint-disable react/jsx-key */
 import { useState } from 'react';
 import './App.css'
 
 function App() {
 
-  console.log("Rendered");
-
   let [currentQuestion, setCurrentQuestion] = useState(0);
+  let [lastAnsweredQuestionIndex, setLastAnsweredQuestionIndex] = useState(0);
+  let [score, setScore] = useState(0);
+  let [selectedOption, setSelectedOption] = useState(0);
+
+
 
   const quizQuestions = [
     {
@@ -14,7 +16,7 @@ function App() {
       options: [
         { answer: 'O(n)', isCorrect: false},
         { answer: 'O(logn)', isCorrect: true},
-        { answer: 'O(nlogn)', isCorrect: false},
+        { answer: 'O(nlog)', isCorrect: false},
         { answer: 'O(1)', isCorrect: false}
       ]
     },
@@ -32,23 +34,41 @@ function App() {
       options: [
         { answer: 'O(n)', isCorrect: false},
         { answer: 'O(logn)', isCorrect: false},
-        { answer: 'O(nlog)', isCorrect: true},
+        { answer: 'O(nlogn)', isCorrect: true},
         { answer: 'O(1)', isCorrect: false}
       ]
     },
   ];
 
   function onNextClick() {
-    if(currentQuestion == quizQuestions.length - 1) return;
+
+    if(currentQuestion == quizQuestions.length - 1) {
+      alert(`quiz finished. Your score is ${score}`);
+      return;
+    }
+    setCurrentQuestion(currentQuestion+1);
     setCurrentQuestion(currentQuestion + 1);
+    setSelectedOption(0);
   }
 
-  function checkAnswer(option) {
-    if(option.isCorrect) {
-      console.log("Correct answer");
-    } else {
-      console.log("Wrong answer");
+  function checkAnswer(selectedOption, idx) {
+
+    if(currentQuestion == lastAnsweredQuestionIndex) {
+      if (selectedOption.isCorrect) {
+        console.log("Correct answer selected!");
+        setScore(score+1);
+      } else {
+          console.log("Incorrect answer selected.");
+        }
+        //mark that the option was selected
+        setLastAnsweredQuestionIndex(lastAnsweredQuestionIndex+1);
+        setSelectedOption(idx+1);
+
     }
+    else {
+      alert("You have already attempted this question!");
+    }
+
   }
 
   return (
@@ -63,7 +83,19 @@ function App() {
           </div>
         </div>
         <div className="answer-section">
-            { quizQuestions[currentQuestion].options.map(option => <button onClick={() => checkAnswer(option)}>{option.answer}</button>) }
+          {quizQuestions[currentQuestion].options.map((option,idx) => (
+            <button onClick={() => checkAnswer(option,idx)} 
+            className= {
+              selectedOption==idx+1 ? 
+                lastAnsweredQuestionIndex==currentQuestion+1? 
+                  option.isCorrect ? "correct" : "incorrect" 
+                  : "": 
+                  ""
+              }
+            >
+              {option.answer}
+            </button>
+          ))}
         </div>
       </div>
       {/* Button to show next question */}
