@@ -30,6 +30,12 @@ body {
   justify-content: space-evenly;
 }
 
+.result{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .score-section {
   display: flex;
   font-size: 24px;
@@ -110,4 +116,13 @@ button svg {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.hide{
+  display: none;
+}
+.correct{
+  background-color: green;
+}
+.incorrect{
+  background-color: red;
 }
