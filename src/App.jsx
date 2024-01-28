@@ -1,9 +1,12 @@
 /* eslint-disable react/jsx-key */
+import { useState } from 'react';
 import './App.css'
 
 function App() {
 
-  const currentQuestion = 0;
+  console.log("Rendered");
+
+  let [currentQuestion, setCurrentQuestion] = useState(0);
 
   const quizQuestions = [
     {
@@ -35,20 +38,35 @@ function App() {
     },
   ];
 
+  function onNextClick() {
+    if(currentQuestion == quizQuestions.length - 1) return;
+    setCurrentQuestion(currentQuestion + 1);
+  }
+
+  function checkAnswer() {
+    
+  }
+
   return (
-    <div className="app">
-      <div className="question-section">
-        <div className="question-count">
-          <span>Question {currentQuestion + 1}</span> / {quizQuestions.length}
+    <div className="card-wrapper">
+      <div className="app">
+        <div className="question-section">
+          <div className="question-count">
+            <span>Question {currentQuestion + 1}</span> / {quizQuestions.length}
+          </div>
+          <div className="question-text">
+            {quizQuestions[currentQuestion].question}
+          </div>
         </div>
-        <div className="question-text">
-          {quizQuestions[0].question}
+        <div className="answer-section">
+            { quizQuestions[currentQuestion].options.map(option => <button onClick={checkAnswer}>{option.answer}</button>) }
         </div>
       </div>
-      <div className="answer-section">
-          { quizQuestions[0].options.map(option => <button>{option.answer}</button>) }
-        </div>
+      {/* Button to show next question */}
+      {/* onClick is a HOF, onNextClick is a callback function */}
+      <button onClick={onNextClick}>Next</button>
     </div>
+    
   );
   
 }

@@ -72,7 +72,7 @@ body {
 }
 
 button {
-  width: 100%;
+  width: 80%;
   font-size: 16px;
   color: #ffffff;
   background-color: #6B705C; /* Dark khaki background */
@@ -103,4 +103,11 @@ button:focus {
 
 button svg {
   margin-right: 5px;
+}
+
+.card-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
