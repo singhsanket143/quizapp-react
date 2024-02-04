@@ -1,6 +1,9 @@
 /* eslint-disable react/jsx-key */
 import { useState } from 'react';
 import './App.css'
+import AnswerSection from './components/AnswerSection';
+import Geolocation from './components/GeoLocation/Geolocation';
+import GeolocationContainer from './components/GeoLocation/GeolocationContainer';
 
 function App() {
 
@@ -53,6 +56,7 @@ function App() {
 
   return (
     <div className="card-wrapper">
+      <GeolocationContainer />
       <div className="app">
         <div className="question-section">
           <div className="question-count">
@@ -62,9 +66,12 @@ function App() {
             {quizQuestions[currentQuestion].question}
           </div>
         </div>
-        <div className="answer-section">
+        {/* <div className="answer-section">
             { quizQuestions[currentQuestion].options.map(option => <button onClick={() => checkAnswer(option)}>{option.answer}</button>) }
-        </div>
+        </div> */}
+
+        <AnswerSection question={quizQuestions[currentQuestion]} onAnswerClick={checkAnswer} />
+
       </div>
       {/* Button to show next question */}
       {/* onClick is a HOF, onNextClick is a callback function */}
