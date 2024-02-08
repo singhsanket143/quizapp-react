@@ -3,10 +3,14 @@ import { useState } from 'react';
 import './App.css'
 import AnswerSection from './components/AnswerSection';
 import GeolocationContainer from './components/GeoLocation/GeolocationContainer';
-import Geolocation from './components/GeoLocation/Geolocation';
+// import Geolocation from './components/GeoLocation/Geolocation';
 import GeolocationNewUi from './components/GeoLocation/GeolocationNewUi';
 
 function App() {
+
+
+  const GeoNewUi = GeolocationContainer(GeolocationNewUi);
+  // const GeoClassic = GeolocationContainer(Geolocation);
 
   console.log("Rendered");
 
@@ -55,11 +59,11 @@ function App() {
     }
   }
 
+
   return (
     <div className="card-wrapper">
-      <GeolocationContainer>
-        <GeolocationNewUi latitude={12} longitude={34} />
-      </GeolocationContainer>
+      <GeoNewUi/>
+      {/* <GeoClassic/> */}
       <div className="app">
         <div className="question-section">
           <div className="question-count">

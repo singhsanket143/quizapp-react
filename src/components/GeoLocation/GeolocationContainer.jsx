@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
-export default function GeolocationContainer({ children }) {
+/* eslint-disable no-unused-vars */
+import { useEffect , useState } from "react";
+
+const GeolocationContainer = (BaseComponent) => {
 
     const [latitude, setLatiude] = useState(null);
     const [longitude, setLongitude] = useState(null);
@@ -18,13 +20,11 @@ export default function GeolocationContainer({ children }) {
         }
     }, [navigator]);
 
-    return (
-        <div>
-             {children}
-
-        </div>
-    )
-
+    return function FinalComponent(props){
+      return <BaseComponent {...props} latitude={latitude} longitude={longitude}/>
+    }
 }
+
+export default GeolocationContainer;
 
 // -> Presentation Layer (ui) , -> Container layer (logic)
