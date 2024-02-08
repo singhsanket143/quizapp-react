@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, Children, cloneElement } from "react";
 export default function GeolocationContainer({ children }) {
 
     const [latitude, setLatiude] = useState(null);
@@ -18,13 +18,16 @@ export default function GeolocationContainer({ children }) {
         }
     }, [navigator]);
 
-    return (
-        <div>
-             {children}
-
-        </div>
-    )
-
+  return (
+    <div>
+      {Children.map(children, (child) => {
+        return cloneElement(child, {
+          latitude: latitude,
+          longitude: longitude,
+        });
+      })}
+    </div>
+  );
 }
 
 // -> Presentation Layer (ui) , -> Container layer (logic)
