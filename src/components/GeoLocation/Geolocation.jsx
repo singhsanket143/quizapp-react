@@ -1,6 +1,7 @@
 // eslint-disable-next-line react/prop-types
-export default function Geolocation({latitude, longitude}) {
-
+import { useGeolocation } from "./GeolocationContainer"
+export default function Geolocation() {
+    const [latitude , longitude] = useGeolocation()
     return (
         <div>
             <h1>Geolocation:</h1>
@@ -8,7 +9,6 @@ export default function Geolocation({latitude, longitude}) {
             <div>Longitude: {longitude} </div>
         </div>
     )
-
 }
 
 // -> Presentation Layer (ui) , -> Container layer (logic)

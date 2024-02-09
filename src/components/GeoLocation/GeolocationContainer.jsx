@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-export default function GeolocationContainer({ children }) {
+export function useGeolocation() {
 
     const [latitude, setLatiude] = useState(null);
     const [longitude, setLongitude] = useState(null);
@@ -18,13 +18,11 @@ export default function GeolocationContainer({ children }) {
         }
     }, [navigator]);
 
-    return (
-        <div>
-             {children}
-
-        </div>
-    )
+    return [latitude , longitude];
 
 }
+
+
+
 
 // -> Presentation Layer (ui) , -> Container layer (logic)
