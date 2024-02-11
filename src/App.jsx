@@ -55,11 +55,11 @@ function App() {
     }
   }
 
+  const NewUiGeolocation = GeolocationContainer(Geolocation);
+
   return (
     <div className="card-wrapper">
-      <GeolocationContainer>
-        <Geolocation />
-      </GeolocationContainer>
+      <NewUiGeolocation />
       <div className="app">
         <div className="question-section">
           <div className="question-count">
