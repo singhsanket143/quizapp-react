@@ -58,7 +58,7 @@ function App() {
   return (
     <div className="card-wrapper">
       <GeolocationContainer>
-        <GeolocationNewUi latitude={12} longitude={34} />
+        <Geolocation />
       </GeolocationContainer>
       <div className="app">
         <div className="question-section">

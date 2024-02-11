@@ -1,5 +1,8 @@
+import useGeolocation from "../../hooks/useGeolocation";
+
 // eslint-disable-next-line react/prop-types
-export default function GeolocationNewUi({latitude, longitude}) {
+export default function GeolocationNewUi() {
+    const [latitude, longitude] = useGeolocation();
 
     return (
         <div>
